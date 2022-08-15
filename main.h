@@ -33,4 +33,11 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* error functions */
+int usage_err(void);
+int open_file_error(char *filename);
+int invalid_instruction(int line_number, char *opcode);
+int malloc_error(void);
+int line_num_error(int line_number);
+
 #endif /* _MAIN_H_ */
