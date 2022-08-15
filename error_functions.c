@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * usage_err - prints error if no file or more than one arg
@@ -8,7 +8,7 @@
 int usage_err(void)
 {
 	fprintf(stderr, "USAGE: monty file\n");
-	return (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 /**
@@ -18,7 +18,7 @@ int usage_err(void)
 int open_file_error(char *filename)
 {
 	fprintf(stderr, "Error: Can't open file %s\n", filename);
-	return (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 /**
@@ -28,7 +28,7 @@ int open_file_error(char *filename)
 int invalid_instruction(int line_number, char *opcode)
 {
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
-	return (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 /**
@@ -38,7 +38,7 @@ int invalid_instruction(int line_number, char *opcode)
 int malloc_error(void)
 {
 	fprintf(stderr, "Error: malloc failed\n");
-	return (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 /**
@@ -49,5 +49,5 @@ int malloc_error(void)
 int line_num_error(int line_number)
 {
 	fprtinf(stderr, "L%d: usage: push integer", line_number);
-	return (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
