@@ -9,12 +9,16 @@ TARGET=monty
 SRC=	main.c \
 	error_functions.c \
 	push.c \
+	pall.c
 
-all: 1
-
-1:
+all:
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+
+quick:
+	$(CC) $(SRC) -o $(TARGET)
 
 clean:
 	$(RM) *~ \#*\# \.\#* \
 	$(TARGET)
+
+re:	clean all
