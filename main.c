@@ -5,8 +5,9 @@ int check_command(char *line, int line_count)
 	char *command;
 	int n;
 	instruction_t check[] = {
-		{"push", push},
-		{"pall", pall},
+		{"push", _push},
+		{"pall", _pall},
+		{"pint", _pint},
 		{NULL, NULL};
 	};
 	command = strtok(line, " ");

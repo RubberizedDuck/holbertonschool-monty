@@ -46,5 +46,6 @@ int malloc_error(void);
 int line_num_error(int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
+void _pint(stack_t **stack, unsigned int line_number);
 
 #endif /* _MONTY_H_ */
