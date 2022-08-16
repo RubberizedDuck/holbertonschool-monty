@@ -38,6 +38,13 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+typedef struct global_s
+{
+	int n;
+} global_t;
+
+extern global_t glob_var;
+
 /* opcode functions */
 void _push(stack_t **stack, unsigned int line_number);
 
@@ -49,5 +56,6 @@ int malloc_error(void);
 int line_num_error(int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
+
 
 #endif /* _MONTY_H_ */
