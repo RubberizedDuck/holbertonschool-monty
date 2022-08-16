@@ -45,7 +45,6 @@ int main(int argc, char *argv[])
 
 	while ((nread = getline(&line, &len, stream)) != -1)
 	{
-		printf("line:%s\n nread: %lu\n", line, nread);
 		check_command(line, line_num, &head);
 		line_num++;
 	}
