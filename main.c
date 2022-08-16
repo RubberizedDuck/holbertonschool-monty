@@ -49,5 +49,8 @@ int main(int argc, char *argv[])
 		line_num++;
 	}
 
+	fclose(stream);
+	free(line);
+	free_dlist(head);
 	return (0);
 }
