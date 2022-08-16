@@ -1,8 +1,12 @@
-#ifndef _MAIN_H_
-#define _MAIN_H_
+#ifndef _MONTY_H_
+#define _MONTY_H_
 
+#define _POSIX_C_SOURCE 200809L
+#include <unistd.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -41,4 +45,4 @@ int invalid_instruction(int line_number, char *opcode);
 int malloc_error(void);
 int line_num_error(int line_number);
 
-#endif /* _MAIN_H_ */
+#endif /* _MONTY_H_ */
