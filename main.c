@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 
 	stream = fopen(argv[1], "r");
 	if (stream == NULL)
-		usage_err();
+		open_file_error(argv[1]);
 
 	while ((nread = getline(&line, &len, stream)) != -1)
 	{
