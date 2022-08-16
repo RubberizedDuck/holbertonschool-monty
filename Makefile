@@ -11,7 +11,8 @@ TARGET=monty
 SRC=	main.c \
 	error_functions.c \
 	push.c \
-	pall.c
+	pall.c \
+	free_list.c
 
 MONTY00=bytecodes/00.m
 
