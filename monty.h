@@ -57,5 +57,7 @@ int line_num_error(int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 
+/* free list */
+void free_dlist(stack_t *head);
 
 #endif /* _MONTY_H_ */
