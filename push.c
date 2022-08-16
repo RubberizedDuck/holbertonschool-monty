@@ -7,8 +7,9 @@ void _push(stack_t **stack,__attribute__ ((unused)) unsigned int line_number)
 	char *arr;
 
 	arr = strtok(NULL, " ");
-	
 	n = atoi(arr);
+	if (n == 0 || arr == NULL)
+		line_num_error(line_number);
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 		return;
