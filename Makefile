@@ -4,7 +4,7 @@
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra -pedantic -std=c90 -g
 RM=rm -rf
-VALGRIND=valgrind --leak-check=full --show-leak-kinds=all ./monty
+VALGRIND=valgrind --leak-check=full --show-leak-kinds=all ./monty 
 BETTY=betty
 
 TARGET=monty
@@ -13,9 +13,21 @@ SRC=	main.c \
 	push.c \
 	pall.c
 
+MONTY00=bytecodes/00.m
+
+MONTY01=bytecodes/01.m
+
 all:
-	$(BETTY) $(SRC)
+	$(BETTY) $(SRC) \
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+
+val 0 1:
+
+0:
+	$(VALGRIND) $(MONTY00)
+
+1:
+	$(VALGRIND01) $(MONTY01)
 
 quick:
 	$(CC) $(SRC) -o $(TARGET)
@@ -25,6 +37,3 @@ clean:
 	$(TARGET)
 
 re:	clean all
-
-val:
-	$(VALGRIND)
