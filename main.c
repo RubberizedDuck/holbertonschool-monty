@@ -1,38 +1,31 @@
 #include "monty.h"
 
-int check_command(char *line, unsigned int line_num, stack_t *head)
+int check_command(char *line, unsigned int line_num, stack_t **head)
 {
-	int i, n;
-	char *arr[2];
-
+	char *command;
+	int i;
 	instruction_t check[] = {
 		{"push", _push},
+		{"pall", _pall},
 		{NULL, NULL}
 	};
 
-	arr[0] = strtok(line, " ");
-	printf("arr[0]: %s\n", arr[0]);
+	command = strtok(line, " \n\t\r");
+	if (command == NULL)
+		return (1);
 	i = 0;
 	while (check[i].opcode != NULL)
 	{
-		printf("i:%d\n", i);
-		if (check[i].opcode == arr[0])
-			check[i].f(&head, line_num);
+		if (strcmp(check[i].opcode, command) == 0)
+		{
+			check[i].f(head, line_num);
+			return (0);
+		}
 		i++;
 	}
-	if (strcmp(arr[0], "push") == 0)
-	{
-		arr[1] = strtok(NULL, " ");
-		printf("arr[1]: %s\n", arr[1]);
-		if ((n = atoi(arr[1])) == 0)
-		{
-			invalid_instruction(line_num, arr[0]);
-		}
-		head->n = n;
-		printf("n: %d\n", n);
-	}
+	invalid_instruction(line_num, command);
 
-	return (0);
+	return (1);
 }
 
 int main(int argc, char *argv[])
@@ -42,8 +35,7 @@ int main(int argc, char *argv[])
 	size_t len = 0;
 	ssize_t nread;
 	FILE *stream;
-	stack_t *head;
-
+	stack_t *head = NULL;
 	if (argc != 2)
 		usage_err();
 
@@ -51,12 +43,10 @@ int main(int argc, char *argv[])
 	if (stream == NULL)
 		usage_err();
 
-	head = NULL;
-
 	while ((nread = getline(&line, &len, stream)) != -1)
 	{
-		printf("line: %s\n", line);
-		check_command(line, line_num, head);
+		printf("line:%s\n nread: %lu\n", line, nread);
+		check_command(line, line_num, &head);
 		line_num++;
 	}
 
