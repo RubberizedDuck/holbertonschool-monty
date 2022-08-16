@@ -1,9 +1,21 @@
 #include "monty.h"
 
+int check_command(char *line, int line_count)
+{
+	char *command;
+	int n;
+	instruction_t check[] = {
+		{"push", push},
+		{"pall", pall},
+		{NULL, NULL};
+	};
+	command = strtok(line, " ");
+}
+
 int main(int argc, char *argv[])
 {
-	char *file, *stored;
-	int filedes, file_read;
+	char *file, *stored, *line;
+	int filedes, file_read, line_count = 1;
 
 	if (argc != 2)
 		usage_err();
@@ -22,6 +34,14 @@ int main(int argc, char *argv[])
 	{
 		free(stored);
 		return (0);
+	}
+
+	line = strtok(stored, "\n");
+	while (line != NULL)
+	{
+		if (check_command(line) == 0)
+			line_count++;
+		line = strtok(NULL, "\n");
 	}
 
 	printf("file:%s\n", stored);
