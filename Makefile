@@ -2,12 +2,18 @@
 # gcc -Wall -Werror -Wextra -pedantic -std=c90 *.c -o monty
 
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra -pedantic -std=c90
+CFLAGS=-Wall -Werror -Wextra -pedantic -std=c90 -g
+RM=rm -rf
 
 TARGET=monty
-SRC=	#files to be compiled
+SRC=	main.c \
+	error_functions.c \
 
 all: 1
 
 1:
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+
+clean:
+	$(RM) *~ \#*\# \.\#* \
+	$(TARGET)
