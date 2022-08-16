@@ -4,6 +4,8 @@
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra -pedantic -std=c90 -g
 RM=rm -rf
+VALGRIND=valgrind --leak-check=full --show-leak-kinds=all ./monty
+BETTY=betty
 
 TARGET=monty
 SRC=	main.c \
@@ -12,6 +14,7 @@ SRC=	main.c \
 	pall.c
 
 all:
+	$(BETTY) $(SRC)
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
 
 quick:
@@ -22,3 +25,6 @@ clean:
 	$(TARGET)
 
 re:	clean all
+
+val:
+	$(VALGRIND)
