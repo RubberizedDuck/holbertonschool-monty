@@ -18,7 +18,6 @@ MONTY00=bytecodes/00.m
 MONTY01=bytecodes/01.m
 
 all:
-	$(BETTY) $(SRC) \
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
 
 val 0 1:
@@ -31,6 +30,9 @@ val 0 1:
 
 quick:
 	$(CC) $(SRC) -o $(TARGET)
+
+betty:
+	$(BETTY) $(SRC)
 
 clean:
 	$(RM) *~ \#*\# \.\#* \
