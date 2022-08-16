@@ -1,18 +1,20 @@
-void _push(stack_t **stack, unsigned int line_number)
+#include "monty.h"
+
+void _push(stack_t **stack,__attribute__ ((unused)) unsigned int line_number)
 {
 	stack_t *new;
 
-	new = malloc(sizeof(*new));
+	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 		return;
 
 	/* assign data to new node */
-	new->next = *head;
+	new->next = *stack;
 	new->prev = NULL;
 
 	/* check to see if head if not NULL to assign correctly */
-	if (*head != NULL)
-		(*head)->prev = new;
+	if (*stack != NULL)
+		(*stack)->prev = new;
 
-	*head = new;
+	*stack = new;
 }

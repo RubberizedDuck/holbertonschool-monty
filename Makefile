@@ -8,6 +8,7 @@ RM=rm -rf
 TARGET=monty
 SRC=	main.c \
 	error_functions.c \
+	push.c \
 
 all: 1
 

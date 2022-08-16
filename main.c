@@ -1,63 +1,64 @@
 #include "monty.h"
 
-int check_command(char *line, int line_num)
+int check_command(char *line, unsigned int line_num, stack_t *head)
 {
-	char *command;
-	int n, idx;
-	stack_t *head = NULL;
+	int i, n;
+	char *arr[2];
+
 	instruction_t check[] = {
 		{"push", _push},
-		{"pall", pall},
-		{NULL, NULL};
+		{NULL, NULL}
 	};
-	command = strtok(line, " ");
 
-	idx = 0;
-	while (check[idx].opcode != NULL)
+	arr[0] = strtok(line, " ");
+	printf("arr[0]: %s\n", arr[0]);
+	i = 0;
+	while (check[i].opcode != NULL)
 	{
-		if (*(check[idx].opcode) == command)
+		printf("i:%d\n", i);
+		if (check[i].opcode == arr[0])
+			check[i].f(&head, line_num);
+		i++;
+	}
+	if (strcmp(arr[0], "push") == 0)
+	{
+		arr[1] = strtok(NULL, " ");
+		printf("arr[1]: %s\n", arr[1]);
+		if ((n = atoi(arr[1])) == 0)
 		{
-			check[idx].f(&head, line_num);
+			invalid_instruction(line_num, arr[0]);
 		}
-		idx++;
+		head->n = n;
+		printf("n: %d\n", n);
 	}
 
-	
+	return (0);
 }
 
 int main(int argc, char *argv[])
 {
-	char *file, *stored, *line;
-	int filedes, file_read, line_num = 1;
+	unsigned int line_num = 1;
+	char *line;
+	size_t len = 0;
+	ssize_t nread;
+	FILE *stream;
+	stack_t *head;
 
 	if (argc != 2)
 		usage_err();
-	file = argv[1];
 
-	filedes = open(file, O_RDONLY);
-	if (filedes == -1)
+	stream = fopen(argv[1], "r");
+	if (stream == NULL)
 		usage_err();
 
-	stored = malloc(sizeof(*stored) * 1024);
-	if (stored == NULL)
-		exit(1);
+	head = NULL;
 
-	file_read = read(filedes, stored, 1024);
-	if (file_read == -1)
+	while ((nread = getline(&line, &len, stream)) != -1)
 	{
-		free(stored);
-		return (0);
+		printf("line: %s\n", line);
+		check_command(line, line_num, head);
+		line_num++;
 	}
-
-	line = strtok(stored, "\n");
-	while (line != NULL)
-	{
-		if (check_command(line, line_num) == 0)
-			line_num++;
-		line = strtok(NULL, "\n");
-	}
-
-	printf("file:%s\n", stored);
 
 	return (0);
 }
