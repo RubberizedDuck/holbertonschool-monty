@@ -45,5 +45,6 @@ int invalid_instruction(int line_number, char *opcode);
 int malloc_error(void);
 int line_num_error(int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number);
 
 #endif /* _MONTY_H_ */

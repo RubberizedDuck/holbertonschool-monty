@@ -15,12 +15,13 @@ void _pall(stack_t **stack, unsigned int line_number)
 	/* if stack is empty, print nothing */
 	if (*stack == NULL || stack == NULL)
 		return;
-	/* temp node points to head node */
-	temp = *stack;
+	/* next stack is assigned to temp */
+	temp = (*stack)->next;
 	/* prints each elements while the stack is not empty */
-	while(temp != NULL)
+	while (temp != NULL)
 	{
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
+	(void)line_number;
 }
