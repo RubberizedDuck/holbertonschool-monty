@@ -15,7 +15,8 @@ SRC=	main.c \
 	pall.c \
 	free_list.c \
 	swap_pop.c \
-	pint.c
+	pint.c \
+	nop.c
 
 
 MONTY00=bytecodes/00.m
