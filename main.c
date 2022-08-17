@@ -1,5 +1,13 @@
 #include "monty.h"
 
+/**
+ * check_command - checks the opcode against the command sent through
+ * @command: pointer to command
+ * @line_num: count of lines executed
+ * @head: pointer to start of stack
+ * Return: 0 on success, 1 on failure
+ */
+
 int check_command(char *command, unsigned int line_num, stack_t **head)
 {
 	int i;
@@ -24,6 +32,13 @@ int check_command(char *command, unsigned int line_num, stack_t **head)
 	return (1);
 }
 
+/**
+ * main - entry into program
+ * @argc: count of args passed
+ * @argv: pointer to array of args passed
+ * Return: 0 on success, exit other wise
+ */
+
 int main(int argc, char *argv[])
 {
 	unsigned int line_num = 1;
@@ -32,6 +47,7 @@ int main(int argc, char *argv[])
 	ssize_t nread;
 	FILE *stream;
 	stack_t *head = NULL;
+
 	if (argc != 2)
 		usage_err();
 

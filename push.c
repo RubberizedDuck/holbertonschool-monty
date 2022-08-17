@@ -13,7 +13,14 @@ int _isdigit(int c)
 		return (0);
 }
 
-void _push(stack_t **stack,unsigned int line_number)
+/**
+ * _push - adds new node element to start of stack
+ * @stack: pointer to start of stack
+ * @line_number: count of lines of executed
+ * Return: void
+ */
+
+void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 	size_t idx = 0;
