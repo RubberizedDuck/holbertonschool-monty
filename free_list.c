@@ -6,11 +6,11 @@
  *Return: void
  */
 
-void free_dlist(stack_t *head)
+void free_dlist(stack_t **head)
 {
 	stack_t *curr, *temp;
 
-	curr = head;
+	curr = *head;
 
 	while (curr != NULL)
 	{
@@ -19,5 +19,5 @@ void free_dlist(stack_t *head)
 		free(temp);
 	}
 
-	head = NULL;
+	*head = NULL;
 }

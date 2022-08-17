@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -40,10 +41,10 @@ typedef struct instruction_s
 
 typedef struct global_s
 {
-	int n;
+	char *argument;
 } global_t;
 
-extern global_t glob_var;
+global_t glob_var;
 
 /* opcode functions */
 void _push(stack_t **stack, unsigned int line_number);
@@ -58,6 +59,6 @@ void _nop(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 
 /* free list */
-void free_dlist(stack_t *head);
+void free_dlist(stack_t **head);
 
 #endif /* _MONTY_H_ */
