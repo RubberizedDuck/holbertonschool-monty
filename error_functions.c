@@ -13,6 +13,7 @@ int usage_err(void)
 
 /**
  * open_file_error - prints error if file for any reason, can't be opened
+ * @filename: pointer to filename
  * Return: EXIT_FAILURE always
  */
 int open_file_error(char *filename)
@@ -23,6 +24,8 @@ int open_file_error(char *filename)
 
 /**
  * invalid_instruction - prints the line number an error ocurred on
+ * @line_number: count of lines exec
+ * @opcode: pointer to command passed through
  * Return: EXIT_FAILURE always
  */
 int invalid_instruction(int line_number, char *opcode)
@@ -44,10 +47,11 @@ int malloc_error(void)
 /**
  * line_num_error - prints error if the value after push is not an integer
  * or there is no argument given
+ * @line_number: count of lines executed
  * Return: EXIT_FAILURE always
  */
 int line_num_error(int line_number)
 {
-	fprintf(stderr, "L%d: usage: push integer", line_number);
+	fprintf(stderr, "L%d: usage: push integer\n", line_number);
 	exit(EXIT_FAILURE);
 }

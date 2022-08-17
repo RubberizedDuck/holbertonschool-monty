@@ -1,51 +1,75 @@
 #include "monty.h"
 
-int check_command(char *line, int line_count)
+/**
+ * check_command - checks the opcode against the command sent through
+ * @command: pointer to command
+ * @line_num: count of lines executed
+ * @head: pointer to start of stack
+ * Return: 0 on success, 1 on failure
+ */
+
+int check_command(char *command, unsigned int line_num, stack_t **head)
 {
-	char *command;
-	int n;
+	int i;
 	instruction_t check[] = {
 		{"push", _push},
 		{"pall", _pall},
 		{"pint", _pint},
 		{NULL, NULL};
 	};
-	command = strtok(line, " ");
+
+	i = 0;
+	while (check[i].opcode != NULL)
+	{
+		if (strcmp(check[i].opcode, command) == 0)
+		{
+			check[i].f(head, line_num);
+			return (0);
+		}
+		i++;
+	}
+	invalid_instruction(line_num, command);
+
+	return (1);
 }
+
+/**
+ * main - entry into program
+ * @argc: count of args passed
+ * @argv: pointer to array of args passed
+ * Return: 0 on success, exit other wise
+ */
 
 int main(int argc, char *argv[])
 {
-	char *file, *stored, *line;
-	int filedes, file_read, line_count = 1;
+	unsigned int line_num = 1;
+	char *line, *command;
+	size_t len = 0;
+	ssize_t nread;
+	FILE *stream;
+	stack_t *head = NULL;
 
 	if (argc != 2)
 		usage_err();
-	file = argv[1];
 
-	filedes = open(file, O_RDONLY);
-	if (filedes == -1)
-		usage_err();
+	stream = fopen(argv[1], "r");
+	if (stream == NULL)
+		open_file_error(argv[1]);
 
-	stored = malloc(sizeof(*stored) * 1024);
-	if (stored == NULL)
-		exit(1);
-
-	file_read = read(filedes, stored, 1024);
-	if (file_read == -1)
+	while ((nread = getline(&line, &len, stream)) != -1)
 	{
-		free(stored);
-		return (0);
+		command = strtok(line, " \n\t\r");
+		if (command == NULL)
+		{
+			line_num++;
+			continue;
+		}
+		glob_var.argument = strtok(NULL, " \n\t\r");
+		check_command(command, line_num, &head);
+		line_num++;
 	}
-
-	line = strtok(stored, "\n");
-	while (line != NULL)
-	{
-		if (check_command(line) == 0)
-			line_count++;
-		line = strtok(NULL, "\n");
-	}
-
-	printf("file:%s\n", stored);
-
+	free(line);
+	fclose(stream);
+	free_dlist(&head);
 	return (0);
 }

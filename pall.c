@@ -16,7 +16,7 @@ void _pall(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL || stack == NULL)
 		return;
 	/* next stack is assigned to temp */
-	temp = (*stack)->next;
+	temp = *stack;
 	/* prints each elements while the stack is not empty */
 	while (temp != NULL)
 	{
