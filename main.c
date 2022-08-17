@@ -1,8 +1,7 @@
 #include "monty.h"
 
-int check_command(char *line, unsigned int line_num, stack_t **head)
+int check_command(char *command, unsigned int line_num, stack_t **head)
 {
-	char *command;
 	int i;
 	instruction_t check[] = {
 		{"push", _push},
@@ -10,9 +9,6 @@ int check_command(char *line, unsigned int line_num, stack_t **head)
 		{NULL, NULL}
 	};
 
-	command = strtok(line, " \n\t\r");
-	if (command == NULL)
-		return (1);
 	i = 0;
 	while (check[i].opcode != NULL)
 	{
@@ -31,7 +27,7 @@ int check_command(char *line, unsigned int line_num, stack_t **head)
 int main(int argc, char *argv[])
 {
 	unsigned int line_num = 1;
-	char *line;
+	char *line, *command;
 	size_t len = 0;
 	ssize_t nread;
 	FILE *stream;
@@ -45,12 +41,18 @@ int main(int argc, char *argv[])
 
 	while ((nread = getline(&line, &len, stream)) != -1)
 	{
-		check_command(line, line_num, &head);
+		command = strtok(line, " \n\t\r");
+		if (command == NULL)
+		{
+			line_num++;
+			continue;
+		}
+		glob_var.argument = strtok(NULL, " \n\t\r");
+		check_command(command, line_num, &head);
 		line_num++;
 	}
-
-	fclose(stream);
 	free(line);
-	free_dlist(head);
+	fclose(stream);
+	free_dlist(&head);
 	return (0);
 }
