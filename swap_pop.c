@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * delete_dnodeint_at_index - deletes node at given index
+ * _pop - deletes node at given index
  * @stack: pointer to pointer to start of list
  * @line_number: the line at which the opcode is located
  */
