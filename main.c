@@ -14,6 +14,8 @@ int check_command(char *command, unsigned int line_num, stack_t **head)
 	instruction_t check[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"pop", _pop},
+		{"swap", _swap},
 		{NULL, NULL}
 	};
 
