@@ -15,7 +15,7 @@ int check_command(char *command, unsigned int line_num, stack_t **head)
 		{"push", _push},
 		{"pall", _pall},
 		{"pint", _pint},
-		{NULL, NULL};
+		{NULL, NULL}
 	};
 
 	i = 0;
