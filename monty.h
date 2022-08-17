@@ -48,6 +48,10 @@ global_t glob_var;
 
 /* opcode functions */
 void _push(stack_t **stack, unsigned int line_number);
+void _pop(stack_t **stack, unsigned int line_number);
+void _swap(stack_t **stack, unsigned int line_number);
+void _nop(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number);
 
 /* error functions */
 int usage_err(void);
@@ -55,8 +59,8 @@ int open_file_error(char *filename);
 int invalid_instruction(int line_number, char *opcode);
 int malloc_error(void);
 int line_num_error(int line_number);
-void _nop(stack_t **stack, unsigned int line_number);
-void _pall(stack_t **stack, unsigned int line_number);
+int error_empty_stack_pop(int line_number);
+void swap_error(unsigned int line_number);
 
 /* free list */
 void free_dlist(stack_t **head);
