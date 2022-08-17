@@ -55,8 +55,6 @@ void _push(stack_t **stack, unsigned int line_number)
 	*stack = new;
 }
 
-#include "monty.h"
-
 /**
  * _pall - prints all the values on the stack,
  * starting from the top of the stack
@@ -83,10 +81,6 @@ void _pall(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 }
 
-
-
-#include "monty.h"
-
 /**
  * _pint - prints the value at the top of the stack, followed by a new line
  * @stack: pointer to top of stack
@@ -105,8 +99,6 @@ void _pint(stack_t **stack, unsigned int line_number)
 	/* prints the value at the top of stack, followed by new line */
 	printf("%d\n", (*stack)->n);
 }
-
-#include "monty.h"
 
 /**
  * _pop - deletes node at given index
