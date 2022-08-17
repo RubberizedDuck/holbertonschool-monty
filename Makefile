@@ -12,6 +12,7 @@ SRC=	main.c \
 	error_functions.c \
 	push.c \
 	pall.c \
+	swap_pop.c \
 	free_list.c
 
 MONTY00=bytecodes/00.m
