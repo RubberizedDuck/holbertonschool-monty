@@ -19,6 +19,7 @@ int check_command(char *command, unsigned int line_num, stack_t **head)
 		{"swap", _swap},
 		{"add", _add},
 		{"nop", _nop},
+		{"sub", _sub},
 		{NULL, NULL}
 	};
 
