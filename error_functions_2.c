@@ -22,3 +22,16 @@ int swap_error(unsigned int line_number)
 	fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 	exit(EXIT_FAILURE);
 }
+
+
+/**
+ * sub_error - prints to STDERR if _sub function can't execute
+ * @line_number: count of lines executed
+ * Return: int
+ */
+
+int sub_error(unsigned int line_number)
+{
+	fprintf(stderr, "L%d: can't sub, stack too short", line_number);
+	exit(EXIT_FAILURE);
+}
