@@ -32,6 +32,6 @@ int swap_error(unsigned int line_number)
 
 int sub_error(unsigned int line_number)
 {
-	fprintf(stderr, "L%d: can't sub, stack too short", line_number);
+	fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 	exit(EXIT_FAILURE);
 }
