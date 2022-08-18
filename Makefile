@@ -13,8 +13,7 @@ SRC=	main.c \
 	error_functions_2.c \
 	free_list.c \
 	monty_funcs.c \
-	monty_funcs_2.c \
-	add.c
+	monty_funcs_2.c
 
 MONTY00=bytecodes/00.m
 
