@@ -54,6 +54,7 @@ void _add(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
+void _sub(stack_t **stack, unsigned int line_number);
 
 /* error functions */
 int usage_err(void);
@@ -63,6 +64,7 @@ int malloc_error(void);
 int line_num_error(int line_number);
 int error_empty_stack_pop(unsigned int line_number);
 int swap_error(unsigned int line_number);
+int sub_error(unsigned int line_number);
 
 /* free list */
 void free_dlist(stack_t **head);
