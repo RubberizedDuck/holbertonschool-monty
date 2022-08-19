@@ -73,7 +73,6 @@ void _sub(stack_t **stack, unsigned int line_number)
 
 	_pop(stack, line_number);
 }
-#include "monty.h"
 
 /**
  * _add - adds the top two elements of the stack
@@ -104,5 +103,29 @@ void _add(stack_t **stack, unsigned int line_number)
 	/* store total in second top element */
 	(*stack)->next->n = total;
 	/* remove top element */
+	_pop(stack, line_number);
+}
+
+/**
+ * _div - divides the top two elements of the stack
+ * @stack: pointer to start fot the stack
+ * @line_number: count of lines executed
+ * Return: void
+ */
+
+void _div(stack_t **stack, unsigned int line_number)
+{
+	int count, total;
+	stack_t *temp;
+
+	count = list_len(stack);
+
+	if (count < 2)
+		div_error(line_number);
+
+	temp = *stack;
+	total = temp->next->n / temp->n;
+	temp->next->n = total;
+
 	_pop(stack, line_number);
 }
