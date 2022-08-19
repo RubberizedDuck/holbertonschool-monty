@@ -39,11 +39,18 @@ int sub_error(unsigned int line_number)
 /**
  * div_error - prints to STDERR if _div func can't execute
  * @line_number: count of lines executed
+ * @mode: determines which error to print
  * Return: int
  */
 
-int div_error(unsigned int line_number)
+int div_error(unsigned int line_number, int mode)
 {
-	fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+	if (mode == 1)
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n",
+			line_number);
+	}
+	else
+		fprintf(stderr, "L%d: division by zero\n", line_number);
 	exit(EXIT_FAILURE);
 }

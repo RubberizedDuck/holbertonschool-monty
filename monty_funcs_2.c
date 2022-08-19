@@ -121,9 +121,12 @@ void _div(stack_t **stack, unsigned int line_number)
 	count = list_len(stack);
 
 	if (count < 2)
-		div_error(line_number);
+		div_error(line_number, 1);
 
 	temp = *stack;
+	if (temp->n == 0)
+		div_zero(line_number, 0);
+
 	total = temp->next->n / temp->n;
 	temp->next->n = total;
 
