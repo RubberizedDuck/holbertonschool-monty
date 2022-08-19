@@ -125,7 +125,7 @@ void _div(stack_t **stack, unsigned int line_number)
 
 	temp = *stack;
 	if (temp->n == 0)
-		div_zero(line_number, 0);
+		div_error(line_number, 0);
 
 	total = temp->next->n / temp->n;
 	temp->next->n = total;
