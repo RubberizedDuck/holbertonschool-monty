@@ -10,7 +10,7 @@
 
 void rotr(stack_t **stack,__attribute__ ((unused)) unsigned int line_number)
 {
-	int count, idx;
+	int count;
 	stack_t *held, *temp;
 
 	if (stack == NULL || *stack == NULL)
@@ -20,16 +20,13 @@ void rotr(stack_t **stack,__attribute__ ((unused)) unsigned int line_number)
 	if (count < 2)
 		return;
 
-	idx  = 0;
-        temp= *stack;
-	while (idx < count)
+	while (temp->next != NULL)
 	{
+		held = temp;
 		temp = temp->next;
-		idx++;
 	}
 
-	held = temp->next;
-	temp->next = NULL;
-	held->next = *stack;
-	*stack = held;
+	held->next = NULL;
+	temp->next = *stack;
+	*stack = temp;
 }
