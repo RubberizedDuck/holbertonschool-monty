@@ -21,6 +21,7 @@ int check_command(char *command, unsigned int line_num, stack_t **head)
 		{"nop", _nop},
 		{"sub", _sub},
 		{"div", _div},
+		{"mul", _mul},
 		{NULL, NULL}
 	};
 
