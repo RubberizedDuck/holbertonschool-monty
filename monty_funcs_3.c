@@ -70,4 +70,5 @@ void pchar(stack_t **stack, unsigned int line_number)
 		pchar_error(line_number, 1);
 
 	putchar(n);
+	putchar('\n');
 }
