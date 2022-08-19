@@ -11,6 +11,7 @@ TARGET=monty
 SRC=	main.c \
 	error_functions.c \
 	error_functions_2.c \
+	error_functions_3.c \
 	list_funcs.c \
 	monty_funcs.c \
 	monty_funcs_2.c \
