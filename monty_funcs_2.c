@@ -11,12 +11,8 @@ void _swap(stack_t **stack, unsigned int line_number)
 	stack_t *temp;
 	int count = 0;
 
-	temp = *stack;
-	while (temp != NULL)
-	{
-		temp = temp->next;
-		count++;
-	}
+	count = list_len(stack);
+
 	if (count < 2)
 	{
 		swap_error(line_number);
@@ -54,13 +50,7 @@ void _sub(stack_t **stack, unsigned int line_number)
 	stack_t *temp;
 	int total, count = 0;
 
-	temp = *stack;
-
-	while  (temp != NULL)
-	{
-		temp = temp->next;
-		count++;
-	}
+	count = list_len(stack);
 
 	if (count < 2)
 	{
@@ -83,22 +73,16 @@ void _sub(stack_t **stack, unsigned int line_number)
 
 void _add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
 	int total, count = 0;
 
-	temp = *stack;
-	while (temp != NULL)
-	{
-		temp = temp->next;
-		count++;
-	}
+	count = list_len(stack);
 	if (count < 2)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't add, stack too short\n",
+			line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	temp = *stack;
 	total = ((*stack)->n) + ((*stack)->next->n);
 	/* store total in second top element */
 	(*stack)->next->n = total;
