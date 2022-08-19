@@ -72,3 +72,29 @@ void pchar(stack_t **stack, unsigned int line_number)
 	putchar(n);
 	putchar('\n');
 }
+
+/**
+ * pstr - Prints out a string at the top of the stack
+ * followed by a new line
+ * @stack: pointer to start of stack
+ * @line_number: count of lines executed
+ * Return: void
+ */
+
+void pstr(stack_t **stack,__attribute__ ((unused)) unsigned int line_number)
+{
+	stack_t *node;
+	int n;
+
+	node = *stack;
+
+	while (node)
+	{
+		n = node->n;
+		if (n < 1 || n > 127)
+			break;
+		putchar(n);
+		node = node->next;
+	}
+	putchar('\n');
+}
