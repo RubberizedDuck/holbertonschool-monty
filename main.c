@@ -26,6 +26,7 @@ int check_command(char *command, unsigned int line_num, stack_t **head)
 		{"pchar", pchar},
 		{"pstr", pstr},
 		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 
