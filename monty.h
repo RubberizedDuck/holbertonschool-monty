@@ -66,7 +66,7 @@ int line_num_error(int line_number);
 int error_empty_stack_pop(unsigned int line_number);
 int swap_error(unsigned int line_number);
 int sub_error(unsigned int line_number);
-int div_error(unsigned int line_number);
+int div_error(unsigned int line_number, int mode);
 
 /* list functions */
 void free_dlist(stack_t **head);
