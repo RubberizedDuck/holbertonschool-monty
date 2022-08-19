@@ -15,7 +15,8 @@ SRC=	main.c \
 	list_funcs.c \
 	monty_funcs.c \
 	monty_funcs_2.c \
-	monty_funcs_3.c
+	monty_funcs_3.c \
+	monty_funcs_4.c
 
 MONTY00=bytecodes/00.m
 
