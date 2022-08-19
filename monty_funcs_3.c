@@ -18,8 +18,7 @@ void _mul(stack_t **stack, unsigned int line_number)
 			line_number);
 		exit(EXIT_FAILURE);
 	}
-
-       	total = ((*stack)->n) * ((*stack)->next->n);
+	total = ((*stack)->n) * ((*stack)->next->n);
 	/* store total in second top element */
 	(*stack)->next->n = total;
 	/* remove top element */
