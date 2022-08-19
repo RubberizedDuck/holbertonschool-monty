@@ -23,6 +23,7 @@ int check_command(char *command, unsigned int line_num, stack_t **head)
 		{"div", _div},
 		{"mul", _mul},
 		{"mod", _mod},
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 

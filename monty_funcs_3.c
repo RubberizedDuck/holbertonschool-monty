@@ -49,3 +49,25 @@ void _mod(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = total;
 	_pop(stack, line_number);
 }
+
+/**
+ * pchar - prints out the char at the top of the stack
+ * @stack: pointer to start of stack
+ * @line_number: count of lines executed
+ * Return: void
+ */
+
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	int n;
+
+	if (stack == NULL || *stack == NULL)
+		pchar_error(line_number, 0);
+
+	n = (*stack)->n;
+
+	if (n < 0 || n > 127)
+		pchar_error(line_number, 1);
+
+	putchar(n);
+}
