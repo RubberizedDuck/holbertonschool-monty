@@ -98,3 +98,35 @@ void pstr(stack_t **stack, __attribute__ ((unused)) unsigned int line_number)
 	}
 	putchar('\n');
 }
+
+/**
+ * rotl - the top elemenmt becomes the last node on the stack
+ * second item becomes the head of the stack
+ * @stack: pointer to start of stack
+ * @line_number: count of lines executed
+ * Return: void
+ */
+
+void rotl(stack_t **stack, __attribute__ ((unused)) unsigned int line_number)
+{
+	stack_t *temp, *held, *first;
+	int count;
+
+	if (stack == NULL || *stack == NULL)
+		return;
+
+	count = list_len(stack);
+	if (count < 2)
+		return;
+
+	temp = *stack;
+	first = *stack;
+	held = temp->next;
+
+	while (temp->next != NULL)
+		temp = temp->next;
+
+	temp->next = first;
+	first->next = NULL;
+	*stack = held;
+}
