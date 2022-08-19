@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 	while ((nread = getline(&line, &len, stream)) != -1)
 	{
 		command = strtok(line, " \n\t\r");
-		if (command == NULL)
+		if (command == NULL || command[0] == '#')
 		{
 			line_num++;
 			continue;
